@@ -2,10 +2,25 @@
 import React, { Component } from 'react';
 import Home from '../components/Home';
 
-export default class HomePage extends Component {
+class HomePage extends Component {
+  constructor() {
+    super();
+  }
   render() {
     return (
       <Home />
     );
   }
+};
+
+mapStateToProps = (state) => {
+
 }
+
+mapDispatchToProps = (dispatch) => {
+
+}
+
+HomePage = connect(mapStateToProps, mapDispatchToProps)(HomePage);
+
+export default HomePage;
