@@ -1,6 +1,8 @@
-const login = () => {
+const login = (username, password) => {
   return {
-    type: 'LOGIN'
+    type: 'LOGIN',
+    username: username,
+    password: password
   };
 };
 

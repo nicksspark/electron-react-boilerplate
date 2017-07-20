@@ -1,10 +1,25 @@
 import axios from 'axios';
 
-const reducer = (state = {}, action) => {
+export type reducerStateType = {
+  +reducer: object
+};
+
+const reducer = (state = {
+  fname: 'Nicholas',
+  lname: 'Park',
+  library: [1, 2, 3, 4, 5]
+}, action) => {
   let newState = Object.assign({}, state);
   switch (action.type) {
     case 'LOGIN':
-      return action.user;
+    console.log('LOGIN TRIGGERED', action.username, action.password);
+      axios.post('/login', {
+        username: action.username,
+        password: action.password
+      })
+      .then((res) => {
+        return res.user
+      });
     case 'ADD_BOOK':
       const bookId = action.id;
       newState = Object.assign(
@@ -17,10 +32,10 @@ const reducer = (state = {}, action) => {
       .then((res) => (newState))
       .catch((err) => (console.log('ERROR', err)));
     case 'DELETE_BOOK':
-      const bookId = action.id;
+      const book = action.id;
       const newLib = [];
       newState.library.forEach((id) => {
-        if (id !== bookId) {
+        if (id !== book) {
           newLib.push(id);
         };
       });
@@ -29,7 +44,7 @@ const reducer = (state = {}, action) => {
         {library: newLib}
       );
       axios.post('/delete', {
-        id: bookId
+        id: book
       })
       .then((res) => (newState));
     case 'LOGOUT':
