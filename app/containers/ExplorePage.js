@@ -14,35 +14,39 @@ class ExplorePage extends Component {
     super();
     this.state = {
       books: [
-        {
-          title: 'Early Transcendentals',
-          author: 'Stewart',
-          image: 'https://images-na.ssl-images-amazon.com/images/I/51xUmFAz%2BVL._SX258_BO1,204,203,200_.jpg',
-          id: 1
-        },
-        {
-          title: 'Calculus',
-          author: 'Anton, Bivens, Davis',
-          image: 'https://prodimage.images-bn.com/pimages/9780470647691_p0_v2_s192x300.jpg',
-          id: 2
-        }
+        // {
+        //   title: 'Early Transcendentals',
+        //   author: 'Stewart',
+        //   image: 'https://images-na.ssl-images-amazon.com/images/I/51xUmFAz%2BVL._SX258_BO1,204,203,200_.jpg',
+        //   id: 1
+        // },
+        // {
+        //   title: 'Calculus',
+        //   author: 'Anton, Bivens, Davis',
+        //   image: 'https://prodimage.images-bn.com/pimages/9780470647691_p0_v2_s192x300.jpg',
+        //   id: 2
+        // }
       ]
     };
   }
 
-  // componentDidMount() {
-  //   let books;
-  //   axios.get('/explore')
-  //   .then((res) => {
-  //     books = res.books;
-  //     this.setState({
-  //       books: books
-  //     })
-  //   })
-  //   .catch((err) => {
-  //     console.log('ERR', err);
-  //   });
-  // }
+  componentDidMount() {
+    let books;
+    axios.get('http://localhost:3000/explore', {
+      headers: {
+        'Authorization': 'Bearer ' + this.props.token
+      }
+    })
+    .then((res) => {
+      books = res.data.library;
+      this.setState({
+        books: books
+      })
+    })
+    .catch((err) => {
+      console.log('ERR', err);
+    });
+  }
   render() {
     if (!this.props.token) {
       return <Redirect to='/login' />;

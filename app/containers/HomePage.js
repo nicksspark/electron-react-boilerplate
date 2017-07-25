@@ -14,31 +14,40 @@ class HomePage extends Component {
     super();
     this.state = {
       books: [
-        {
-          title: 'Early Transcendentals',
-          author: 'Stewart',
-          image: 'https://images-na.ssl-images-amazon.com/images/I/51xUmFAz%2BVL._SX258_BO1,204,203,200_.jpg',
-          id: 1
-        },
-        {
-          title: 'Calculus',
-          author: 'Anton, Bivens, Davis',
-          image: 'https://prodimage.images-bn.com/pimages/9780470647691_p0_v2_s192x300.jpg',
-          id: 2
-        }
+        // {
+        //   title: 'Early Transcendentals',
+        //   author: 'Stewart',
+        //   image: 'https://images-na.ssl-images-amazon.com/images/I/51xUmFAz%2BVL._SX258_BO1,204,203,200_.jpg',
+        //   id: '596fea7c734d1d6202a70d1f'
+        // },
+        // {
+        //   title: 'Calculus',
+        //   author: 'Anton, Bivens, Davis',
+        //   image: 'https://prodimage.images-bn.com/pimages/9780470647691_p0_v2_s192x300.jpg',
+        //   id: '2'
+        // }
       ]
     };
   }
-  // componentDidMount() {
-  //   axios.post('http://localhost:3000/', {
-  //     id: this.props.user.id
-  //   })
-  //   .then((res) => {
-  //     this.setState({
-  //       books: res.books
-  //     })
-  //   })
-  // }
+  componentDidMount() {
+    console.log(this.props);
+    axios.post('http://localhost:3000/', {
+      headers: {
+        'Authorization': 'Bearer ' + this.props.token
+      },
+      id: this.props.user.id
+    })
+    .then((res) => {
+      if (res.data.success) {
+        this.setState({
+          books: res.data.books
+        });
+      }
+    })
+    .catch((err) => {
+      console.log('ERR', err);
+    })
+  }
   onLogout(e) {
     e.preventDefault();
     console.log('trying to log out');

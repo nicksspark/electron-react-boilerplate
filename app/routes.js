@@ -7,7 +7,7 @@ import HomePage from './containers/HomePage';
 import ExplorePage from './containers/ExplorePage';
 import LoginPage from './containers/LoginPage';
 import RegisterPage from './containers/RegisterPage';
-// import ReadPage from './containers/ReadPage';
+import ReadPage from './containers/ReadPage';
 
 
 class Routes extends Component {
@@ -19,7 +19,7 @@ class Routes extends Component {
           <Route exact path="/login" component={LoginPage} />
           <Route exact path="/register" component={RegisterPage} />
           <Route exact path="/explore" component={ExplorePage} />
-          {/* <Route exact path="/read" component={ReadPage}/> */}
+          <Route path="/read" component={ReadPage}/>
         </Switch>
       </App>
     );
