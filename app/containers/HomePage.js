@@ -6,6 +6,7 @@ import { Redirect } from 'react-router';
 import BookStream from '../components/BookStream';
 import axios from 'axios';
 import styles from './css/styles.css';
+import { logout } from '../actions/index';
 
 
 class HomePage extends Component {
@@ -38,6 +39,11 @@ class HomePage extends Component {
   //     })
   //   })
   // }
+  onLogout(e) {
+    e.preventDefault();
+    console.log('trying to log out');
+    this.props.logout();
+  }
   render() {
     console.log('im in home page');
     console.log('token', this.props.token);
@@ -50,8 +56,7 @@ class HomePage extends Component {
           <div className={styles.container}>
             <div className={styles.btnGroup}>
               <Link className={styles.btn} to="/explore">Explore</Link>
-              <Link className={styles.btn} to="/login">Login</Link>
-              <Link className={styles.btn} to="/register">Register</Link>
+              <button className={styles.btn} onClick={(e) => {this.onLogout(e)}}>Logout</button>
             </div>
           </div>
             <div>
@@ -79,8 +84,11 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    deleteBook: (id) => {
-      dispatch(deleteBook(id))
+    // deleteBook: (id) => {
+    //   dispatch(deleteBook(id))
+    // },
+    logout: () => {
+      dispatch(logout())
     }
   }
 };

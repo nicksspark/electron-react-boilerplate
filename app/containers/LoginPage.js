@@ -11,7 +11,7 @@ class LoginPage extends Component {
     this.state = {
       username: '',
       password: ''
-    }
+    };
     this.usernameChange = this.usernameChange.bind(this);
     this.passwordChange = this.passwordChange.bind(this);
   }
@@ -57,7 +57,7 @@ class LoginPage extends Component {
           <input type='text' placeholder='Password' value={this.state.password} onChange={(e) => {this.passwordChange(e)}}/>
           <button type='submit'>Login</button>
         </form>
-        <Link to='/'>Home</Link>
+        <Link to='/register'>Register</Link>
       </div>
     );
   }

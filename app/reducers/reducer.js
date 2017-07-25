@@ -11,6 +11,8 @@ const reducer = (state = {}, action) => {
       newState.user = action.user;
       newState.token = action.token;
       return newState;
+    case 'LOGOUT':
+      return {};
     // case 'ADD_BOOK':
     //   const bookId = action.id;
     //   newState = Object.assign(
@@ -38,8 +40,6 @@ const reducer = (state = {}, action) => {
     //     id: book
     //   })
     //   .then((res) => (newState));
-    // case 'LOGOUT':
-    //   return {};
     default:
       return newState;
   };

@@ -1,12 +1,12 @@
-import React, {Container} from 'react';
+import React, { Component } from 'react';
 
-class BookPage extends Container {
+class ReadPage extends Component {
   constructor(props) {
     super(props);
     this.state = {};
   }
   componentDidMount() {
-    axios.post('/read', {
+    axios.post('http://localhost:3000/read', {
       id: this.props.id
     })
     .then((res) => {
@@ -21,8 +21,12 @@ class BookPage extends Container {
       <div>
         {book.title}
         {book.author}
-        {book.content}
+        {book.text}
       </div>
     );
   }
 }
+
+
+
+export default ReadPage;
