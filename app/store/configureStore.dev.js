@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import { createHashHistory } from 'history';
-import { routerMiddleware, routerActions } from 'react-router-redux';
+import { routerMiddleware, routerActions, syncHistoryWithStore } from 'react-router-redux';
 import { createLogger } from 'redux-logger';
 import rootReducer from '../reducers';
 import * as Actions from '../actions/index';
@@ -58,5 +58,7 @@ const configureStore = (initialState?: reducerStateType) => {
 
   return store;
 };
+
+// history = syncHistoryWithStore(history, configureStore());
 
 export default { configureStore, history };

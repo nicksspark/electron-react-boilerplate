@@ -1,9 +1,12 @@
 // @flow
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router';
 import BookStream from '../components/BookStream';
+import axios from 'axios';
 import styles from './css/styles.css';
+
 
 class HomePage extends Component {
   constructor() {
@@ -26,7 +29,7 @@ class HomePage extends Component {
     };
   }
   // componentDidMount() {
-  //   axios.post('/', {
+  //   axios.post('http://localhost:3000/', {
   //     id: this.props.user.id
   //   })
   //   .then((res) => {
@@ -36,6 +39,12 @@ class HomePage extends Component {
   //   })
   // }
   render() {
+    console.log('im in home page');
+    console.log('token', this.props.token);
+    if (!this.props.token) {
+      console.log('redirecting to login');
+      return <Redirect to='/login' />;
+    }
     return (
         <div>
           <div className={styles.container}>
@@ -52,7 +61,7 @@ class HomePage extends Component {
           <h2 className={styles.header}>Textbook App</h2>
         </div>
           <h2>Books:</h2>
-        <div classname= {styles.bookStream}>
+        <div className= {styles.bookStream}>
           <BookStream books={this.state.books}/>
         </div>
       </div>
@@ -62,7 +71,8 @@ class HomePage extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    user: state.reducer,
+    user: state.reducer.user,
+    token: state.reducer.token,
     router: state.router
   }
 };
