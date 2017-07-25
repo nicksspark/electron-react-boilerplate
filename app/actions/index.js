@@ -1,8 +1,25 @@
-const login = (username, password) => {
+// import { configureStore, history } from './store/configureStore';
+//
+// const store = configureStore();
+//
+// const refreshLogin = (username, password) => {
+//
+//   // Invert control!
+//   // Return a function that accepts `dispatch` so we can dispatch later.
+//   // Thunk middleware knows how to turn thunk async actions into actions.
+//
+//   return function (dispatch) {
+//     return login(username, password).then(
+//       something
+//     );
+//   };
+// }
+
+const login = (user, token) => {
   return {
     type: 'LOGIN',
-    username: username,
-    password: password
+    user: user,
+    token: token
   };
 };
 

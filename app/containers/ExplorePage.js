@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import Counter from '../components/Counter';
 import * as Actions from '../actions/index';
 import {Link} from 'react-router-dom';
+import { Redirect } from 'react-router';
 import axios from 'axios';
 import Book from '../components/Book';
 import BookStream from '../components/BookStream';
+import styles from './css/styles.css';
 
 class ExplorePage extends Component {
   constructor() {
@@ -43,19 +44,23 @@ class ExplorePage extends Component {
   //   });
   // }
   render() {
+    if (!this.props.token) {
+      return <Redirect to='/login' />;
+    }
     return (
       <div>
-        <h2>Explore</h2>
-        <Link to="/">Back to home</Link>
-        <BookStream books={this.state.books}/>
-      </div>
+        <h2 className={styles.header}>Explore</h2>
+        <Link to="/">Back to home</Link>
+        <BookStream books={this.state.books} />
+      </div>
     );
   }
 }
 
 function mapStateToProps(state) {
   return {
-    user: state.reducer,
+    user: state.reducer.user,
+    token: state.reducer.token,
     location: state.router
   };
 };

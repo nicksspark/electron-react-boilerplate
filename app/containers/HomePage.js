@@ -1,8 +1,11 @@
 // @flow
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router';
 import BookStream from '../components/BookStream';
+import axios from 'axios';
+import styles from './css/styles.css';
 
 class HomePage extends Component {
   constructor() {
@@ -25,7 +28,7 @@ class HomePage extends Component {
     };
   }
   // componentDidMount() {
-  //   axios.post('/', {
+  //   axios.post('http://localhost:3000/', {
   //     id: this.props.user.id
   //   })
   //   .then((res) => {
@@ -35,26 +38,40 @@ class HomePage extends Component {
   //   })
   // }
   render() {
+    console.log('im in home page');
+    console.log('token', this.props.token);
+    if (!this.props.token) {
+      console.log('redirecting to login');
+      return <Redirect to='/login' />;
+    }
     return (
       <div>
-        <div>
-          <h2>Textbook App</h2>
-          <h2>Home</h2>
-          <h2>User: {this.props.user.fname}</h2>
-          <h2>Books:</h2>
-          <BookStream books={this.state.books}/>
-          <Link to="/explore">Explore</Link>
-          <Link to="/login">Login</Link>
-          <Link to="/register">Register</Link>
-        </div>
-      </div>
+        <div className={styles.container}>
+          <div className={styles.btnGroup}>
+             <Link className={styles.btn} to="/explore">Explore</Link>
+             <Link className={styles.btn} to="/login">Login</Link>
+             <Link className={styles.btn} to="/register">Register</Link>
+          </div>
+        </div>
+          <div>
+            <h2 className={styles.user}>Welcome, {this.props.user.fname}</h2>
+        </div>
+        <div className={styles.container}>
+          <h2 className={styles.header}>Textbook App</h2>
+        </div>
+          <h2>Books:</h2>
+        <div className= {styles.bookStream}>
+          <BookStream books={this.state.books}/>
+        </div>
+      </div>
     );
   }
 };
 
 const mapStateToProps = (state) => {
   return {
-    user: state.reducer,
+    user: state.reducer.user,
+    token: state.reducer.token,
     router: state.router
   }
 };

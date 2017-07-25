@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Book from './Book';
+import styles from '../containers/css/styles.css';
 
 class BookStream extends Component {
   constructor(props) {
