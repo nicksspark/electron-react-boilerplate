@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import BookStream from '../components/BookStream';
+import styles from './css/styles.css';
 
 class HomePage extends Component {
   constructor() {
@@ -36,16 +37,23 @@ class HomePage extends Component {
   // }
   render() {
     return (
-      <div>
         <div>
-          <h2>Textbook App</h2>
-          <h2>Home</h2>
-          <h2>User: {this.props.user.fname}</h2>
+          <div className={styles.container}>
+            <div className={styles.btnGroup}>
+              <Link className={styles.btn} to="/explore">Explore</Link>
+              <Link className={styles.btn} to="/login">Login</Link>
+              <Link className={styles.btn} to="/register">Register</Link>
+            </div>
+          </div>
+            <div>
+              <h2 className={styles.user}>Welcome, {this.props.user.fname}</h2>
+          </div>
+          <div className={styles.container}>
+          <h2 className={styles.header}>Textbook App</h2>
+        </div>
           <h2>Books:</h2>
+        <div classname= {styles.bookStream}>
           <BookStream books={this.state.books}/>
-          <Link to="/explore">Explore</Link>
-          <Link to="/login">Login</Link>
-          <Link to="/register">Register</Link>
         </div>
       </div>
     );

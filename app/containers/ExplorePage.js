@@ -1,12 +1,12 @@
-import React, {Component} from 'react';
+import { Link } from 'react-router-dom';
+import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import Counter from '../components/Counter';
 import * as Actions from '../actions/index';
-import {Link} from 'react-router-dom';
-import axios from 'axios';
-import Book from '../components/Book';
+// import axios from 'axios';
+// import Book from '../components/Book';
 import BookStream from '../components/BookStream';
+import styles from './css/styles.css';
 
 class ExplorePage extends Component {
   constructor() {
@@ -45,9 +45,9 @@ class ExplorePage extends Component {
   render() {
     return (
       <div>
-        <h2>Explore</h2>
+        <h2 className={styles.header}>Explore</h2>
         <Link to="/">Back to home</Link>
-        <BookStream books={this.state.books}/>
+        <BookStream books={this.state.books} />
       </div>
     );
   }
@@ -58,11 +58,11 @@ function mapStateToProps(state) {
     user: state.reducer,
     location: state.router
   };
-};
+}
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(Actions, dispatch);
-};
+}
 
 ExplorePage = connect(mapStateToProps, mapDispatchToProps)(ExplorePage);
 
