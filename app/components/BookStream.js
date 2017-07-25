@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import Book from './Book';
 import styles from '../containers/css/styles.css';
-
 class BookStream extends Component {
   constructor(props) {
     super(props);
@@ -18,7 +17,7 @@ class BookStream extends Component {
   }
   render() {
     return (
-      <div>
+      <div className={styles.bookStream}>
         {this.getStream()}
       </div>
     );

@@ -7,6 +7,7 @@ import BookStream from '../components/BookStream';
 import axios from 'axios';
 import styles from './css/styles.css';
 
+
 class HomePage extends Component {
   constructor() {
     super();
@@ -45,25 +46,25 @@ class HomePage extends Component {
       return <Redirect to='/login' />;
     }
     return (
-      <div>
-        <div className={styles.container}>
-          <div className={styles.btnGroup}>
-             <Link className={styles.btn} to="/explore">Explore</Link>
-             <Link className={styles.btn} to="/login">Login</Link>
-             <Link className={styles.btn} to="/register">Register</Link>
-          </div>
-        </div>
-          <div>
-            <h2 className={styles.user}>Welcome, {this.props.user.fname}</h2>
-        </div>
-        <div className={styles.container}>
-          <h2 className={styles.header}>Textbook App</h2>
-        </div>
-          <h2>Books:</h2>
-        <div className= {styles.bookStream}>
-          <BookStream books={this.state.books}/>
-        </div>
-      </div>
+        <div>
+          <div className={styles.container}>
+            <div className={styles.btnGroup}>
+              <Link className={styles.btn} to="/explore">Explore</Link>
+              <Link className={styles.btn} to="/login">Login</Link>
+              <Link className={styles.btn} to="/register">Register</Link>
+            </div>
+          </div>
+            <div>
+              <h2 className={styles.user}>Welcome, {this.props.user.fname}</h2>
+          </div>
+          <div className={styles.container}>
+          <h2 className={styles.header}>Textbook App</h2>
+        </div>
+          <h2>Books:</h2>
+        <div className= {styles.bookStream}>
+          <BookStream books={this.state.books}/>
+        </div>
+      </div>
     );
   }
 };

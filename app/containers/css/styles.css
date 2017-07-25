@@ -1,63 +1,63 @@
 .header {
-  align-self: center;
+  align-self: center;
 }
 
 .container {
-  display: flex;
-  justify-content: center;
-  padding-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 20px;
 }
 
 .btnGroup {
-  top: 500px;
-  margin-right: 10px;
-  margin-top: 10px;
-  margin-left: auto;
+  top: 500px;
+  margin-right: 10px;
+  margin-top: 10px;
+  margin-left: auto;
 }
 
 .btn {
-  font-size: 1.2rem;
-  font-weight: bold;
-  border-radius: 50%;
-  margin: 10px;
-  width: 100px;
-  height: 100px;
-  opacity: 0.7;
-  cursor: pointer;
-  font-family: Arial, Helvetica, Helvetica Neue;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 50%;
+  margin: 10px;
+  width: 100px;
+  height: 100px;
+  opacity: 0.7;
+  cursor: pointer;
+  font-family: Arial, Helvetica, Helvetica Neue;
 }
 
 .btn:hover {
-  color: white;
-  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 .user {
-  cursor: pointer;
-  border-radius: 50%;
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin-left: 10px;
-  margin-top: 10px;
-  margin-right: auto;
+  cursor: pointer;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-left: 10px;
+  margin-top: 10px;
+  margin-right: auto;
 }
 .author {
-  font-size:14px;
-  justify-content: center;
+  font-size:14px;
+  justify-content: center;
 }
 
 .bookContainer {
-  padding-bottom: 20px;
-  padding-left: 40px;
-  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 40px;
+  padding-top: 20px;
 }
 
 .titleContainer {
-  justify-content: center;
-  padding-left: 40px;
+  justify-content: center;
+  padding-left: 40px;
 }
 
 .bookStream {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
 }

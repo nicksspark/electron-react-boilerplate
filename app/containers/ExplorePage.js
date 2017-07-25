@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
+import { Link } from 'react-router-dom';
+import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as Actions from '../actions/index';
-import {Link} from 'react-router-dom';
 import { Redirect } from 'react-router';
 import axios from 'axios';
 import Book from '../components/Book';
@@ -49,10 +49,10 @@ class ExplorePage extends Component {
     }
     return (
       <div>
-        <h2 className={styles.header}>Explore</h2>
-        <Link to="/">Back to home</Link>
-        <BookStream books={this.state.books} />
-      </div>
+        <h2 className={styles.header}>Explore</h2>
+        <Link to="/">Back to home</Link>
+        <BookStream books={this.state.books} />
+      </div>
     );
   }
 }
@@ -63,11 +63,11 @@ function mapStateToProps(state) {
     token: state.reducer.token,
     location: state.router
   };
-};
+}
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(Actions, dispatch);
-};
+}
 
 ExplorePage = connect(mapStateToProps, mapDispatchToProps)(ExplorePage);
 
