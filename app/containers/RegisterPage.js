@@ -110,27 +110,27 @@ class RegisterPage extends Component {
         <img src='./visuals/logo-large.png'/>
         <h3> Register </h3>
         <div>
-        <form onSubmit={(e) => {this.onSubmit(e)}}>
-          <TextField
-            value={this.state.fname}
-            floatingLabelText="First Name"
-            onChange={(e) => {this.fnameChange(e)}}
-          /><br />
-          <TextField
-            value={this.state.lname}
-            floatingLabelText="Last Name"
-            onChange={(e) => {this.lnameChange(e)}}
-          /><br />
-          <TextField
-            value={this.state.username}
-            floatingLabelText="Username"
-            onChange={(e) => {this.usernameChange(e)}}
-          /><br />
-          <TextField
-            value={this.state.email}
-            floatingLabelText="Email"
-            onChange={(e) => {this.emailChange(e)}}
-          /><br />
+          <form onSubmit={(e) => {this.onSubmit(e)}}>
+            <TextField
+              value={this.state.fname}
+              floatingLabelText="First Name"
+              onChange={(e) => {this.fnameChange(e)}}
+            /><br />
+            <TextField
+              value={this.state.lname}
+              floatingLabelText="Last Name"
+              onChange={(e) => {this.lnameChange(e)}}
+            /><br />
+            <TextField
+              value={this.state.username}
+              floatingLabelText="Username"
+              onChange={(e) => {this.usernameChange(e)}}
+            /><br />
+            <TextField
+              value={this.state.email}
+              floatingLabelText="Email"
+              onChange={(e) => {this.emailChange(e)}}
+            /><br />
             <TextField
               value={this.state.password}
               type="password"
