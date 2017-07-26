@@ -75,8 +75,8 @@ class LoginPage extends Component {
             /><br />
             <RaisedButton type='submit' label="Primary" primary={true} style={JSstyles.submit} />
           </form>
+          <Link to='/register'>Register</Link>
         </div>
-        <Link to='/register'>Register</Link>
       </div>
     );
   }

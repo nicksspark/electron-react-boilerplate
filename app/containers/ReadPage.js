@@ -6,6 +6,7 @@ import axios from 'axios';
 import { loaded } from '../actions/index';
 import styles from './css/styles.css';
 import { Link } from 'react-router-dom';
+import CSSstyles from './LoginPage.css';
 
 class ReadPage extends Component {
   constructor() {

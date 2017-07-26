@@ -7,7 +7,7 @@ import { login } from '../actions/index';
 import { Redirect } from 'react-router';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
-
+import CSSstyles from './RegisterPage.css';
 class RegisterPage extends Component {
   constructor() {
     super();
@@ -16,7 +16,8 @@ class RegisterPage extends Component {
       password: '',
       fname: '',
       lname: '',
-      email: ''
+      email: '',
+      login: false,
     }
     this.usernameChange = this.usernameChange.bind(this);
     this.passwordChange = this.passwordChange.bind(this);
@@ -89,15 +90,26 @@ class RegisterPage extends Component {
       console.log('ERR', err);
     });
   }
+  onLogin() {
+    this.setState({
+      login: true
+    });
+  }
   render() {
     console.log('im in register');
     console.log('token', this.props.token);
     if (this.props.token) {
       return <Redirect to='/' />;
     }
+    if (this.state.login) {
+      return <Redirect to= '/login' />;
+    }
     return (
-      <div>
+        <h1> Word Farm </h1>
+        <h3> Register </h3>
         <form onSubmit={(e) => {this.onSubmit(e)}}>
+          <div className={CSSstyles.container}>
+          <div className={CSSstyles.formContainer}>
           <TextField
             value={this.state.fname}
             floatingLabelText="First Name"
@@ -124,9 +136,11 @@ class RegisterPage extends Component {
               floatingLabelText="Password"
               onChange={(e) => {this.passwordChange(e)}}
             /><br />
+            </div>
+          </div>
             <RaisedButton type="submit" label="Register" primary={true}/>
+            <RaisedButton className= {CSSstyles.inlineButtons} label="Login" secondary={true} onClick= {() => {this.onLogin()}}/>
         </form>
-        <Link to='/login'>Login</Link>
       </div>
     );
   }
