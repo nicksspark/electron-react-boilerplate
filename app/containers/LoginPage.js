@@ -79,6 +79,7 @@ class LoginPage extends Component {
             <TextField
               hintText=""
               floatingLabelText="Password"
+              type="password"
               value={this.state.password}
               onChange={(e) => {this.passwordChange(e)}}
             /><br />
