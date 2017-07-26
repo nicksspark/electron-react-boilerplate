@@ -6,6 +6,8 @@ import { Redirect } from 'react-router';
 import axios from 'axios';
 import TextField from 'material-ui/TextField';
 
+import RaisedButton from 'material-ui/RaisedButton';
+import CSSstyles from './LoginPage.css';
 
 class LoginPage extends Component {
   constructor() {
@@ -53,16 +55,27 @@ class LoginPage extends Component {
       return <Redirect to='/' />;
     }
     return (
-      <div>
-        <form onSubmit={(e) => this.onLogin(e)}>
-          <TextField
-            defaultValue="Username"
-            floatingLabelText="Floating Label Text"
-          /><br />
-          <input type='text' placeholder='Username' value={this.state.username} onChange={(e) => {this.usernameChange(e)}}/>
-          <input type='text' placeholder='Password' value={this.state.password} onChange={(e) => {this.passwordChange(e)}}/>
-          <button type='submit'>Login</button>
-        </form>
+      <div className={CSSstyles.container}>
+        <div>
+          <img src='../../../CreativeCloudFiles/Asset 2.png'/>
+        </div>
+        <div>
+          <form onSubmit={(e) => this.onLogin(e)}>
+            <TextField
+              hintText=""
+              floatingLabelText="Username"
+              value={this.state.username}
+              onChange={(e) => {this.usernameChange(e)}}
+            /><br />
+            <TextField
+              hintText=""
+              floatingLabelText="Password"
+              value={this.state.password}
+              onChange={(e) => {this.passwordChange(e)}}
+            /><br />
+            <RaisedButton type='submit' label="Primary" primary={true} style={JSstyles.submit} />
+          </form>
+        </div>
         <Link to='/register'>Register</Link>
       </div>
     );
@@ -89,3 +102,9 @@ const mapDispatchToProps = (dispatch) => {
 LoginPage = connect(mapStateToProps, mapDispatchToProps)(LoginPage);
 
 export default LoginPage;
+
+const JSstyles = {
+  submit: {
+    margin: 12,
+  }
+};
