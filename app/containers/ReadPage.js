@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import HomePage from './HomePage';
 import { Redirect } from 'react-router';
 import axios from 'axios';
+import { loaded } from '../actions/index';
 
 class ReadPage extends Component {
   constructor() {
@@ -13,17 +14,20 @@ class ReadPage extends Component {
     console.log('component is mounting.....');
     console.log('token', this.props.token);
     const path = this.props.path;
+    console.log('path', path);
     const bookId = path.split('/')[2];
+    console.log('bookId', bookId);
     axios.get('http://localhost:3000/read/' + bookId, {
       headers: {
         'Authorization': 'Bearer ' + this.props.token
       }
     })
     .then((res) => {
-      console.log(res);
+      console.log('RES', res);
       this.setState({
-        book: res.book
+        book: res.data.book
       });
+      this.props.loaded();
     })
     .catch((err) => {
       console.log('ERR', err);
@@ -34,7 +38,8 @@ class ReadPage extends Component {
       return <Redirect to='/login' />;
     }
     const book = this.state.book;
-    return (
+    const loading = this.props.loading;
+    return (!loading &&
       <div>
         {book.title}
         {book.author}
@@ -48,12 +53,17 @@ const mapStateToProps = (state) => {
   return {
     user: state.reducer.user,
     token: state.reducer.token,
-    path: state.router.location.pathname
+    path: state.router.location.pathname,
+    loading: state.loading.loading
   }
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {};
+  return {
+    loaded: () => {
+      dispatch(loaded())
+    }
+  };
 };
 
 ReadPage = connect(mapStateToProps, mapDispatchToProps)(ReadPage);

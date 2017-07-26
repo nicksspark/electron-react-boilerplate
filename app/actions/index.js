@@ -41,9 +41,16 @@ const deleteBook = () => {
   };
 };
 
+const loaded = () => {
+  return {
+    type: 'LOADED'
+  };
+};
+
 export default {
   login: login,
   logout: logout,
   addBook: addBook,
-  deleteBook: deleteBook
+  deleteBook: deleteBook,
+  loaded: loaded
 };

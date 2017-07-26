@@ -17,7 +17,8 @@ class Book extends Component {
   }
   render() {
     if (this.state.read) {
-      const bookId = this.props.book.id;
+      const bookId = this.props.book._id;
+      console.log('BOOK', this.props.book);
       return (
         <Redirect to={'/read/' + bookId}/>
       )

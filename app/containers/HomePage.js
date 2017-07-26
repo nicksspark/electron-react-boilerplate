@@ -30,18 +30,23 @@ class HomePage extends Component {
     };
   }
   componentDidMount() {
-    console.log(this.props);
+    console.log('props', this.props);
+    console.log('token', this.props.token);
+    console.log('id', this.props.user.id);
+
     axios.post('http://localhost:3000/', {
+      id: this.props.user.id
+      }, {
       headers: {
         'Authorization': 'Bearer ' + this.props.token
-      },
-      id: this.props.user.id
+      }
     })
     .then((res) => {
       if (res.data.success) {
         this.setState({
           books: res.data.books
         });
+        console.log('BOOKS', this.state.books);
       }
     })
     .catch((err) => {
@@ -93,9 +98,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    // deleteBook: (id) => {
-    //   dispatch(deleteBook(id))
-    // },
     logout: () => {
       dispatch(logout())
     }

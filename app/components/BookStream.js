@@ -7,7 +7,7 @@ class BookStream extends Component {
   }
   getStream() {
     let books = this.props.books;
-    books = books.map((book) => (Object.assign(book, {key: book.id})))
+    books = books.map((book) => (Object.assign(book, {key: book._id})))
     books = books.map((book) => {
       return (
         <Book book={book} key={book.key}></Book>
