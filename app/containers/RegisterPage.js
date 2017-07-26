@@ -5,6 +5,8 @@ import axios from 'axios';
 import {Link} from 'react-router-dom';
 import { login } from '../actions/index';
 import { Redirect } from 'react-router';
+import TextField from 'material-ui/TextField';
+import RaisedButton from 'material-ui/RaisedButton';
 
 class RegisterPage extends Component {
   constructor() {
@@ -96,12 +98,33 @@ class RegisterPage extends Component {
     return (
       <div>
         <form onSubmit={(e) => {this.onSubmit(e)}}>
-          <input type='text' placeholder='Username' value={this.state.username} onChange={(e) => {this.usernameChange(e)}}/>
-          <input type='text' placeholder='Password' value={this.state.password} onChange={(e) => {this.passwordChange(e)}}/>
-          <input type='text' placeholder='First Name' value={this.state.fname} onChange={(e) => {this.fnameChange(e)}}/>
-          <input type='text' placeholder='Last Name' value={this.state.lname} onChange={(e) => {this.lnameChange(e)}}/>
-          <input type='text' placeholder='Email' value={this.state.email} onChange={(e) => {this.emailChange(e)}}/>
-          <button type='submit'>Register</button>
+          <TextField
+            value={this.state.fname}
+            floatingLabelText="First Name"
+            onChange={(e) => {this.fnameChange(e)}}
+          /><br />
+          <TextField
+            value={this.state.lname}
+            floatingLabelText="Last Name"
+            onChange={(e) => {this.lnameChange(e)}}
+          /><br />
+          <TextField
+            value={this.state.username}
+            floatingLabelText="Username"
+            onChange={(e) => {this.usernameChange(e)}}
+          /><br />
+          <TextField
+            value={this.state.email}
+            floatingLabelText="Email"
+            onChange={(e) => {this.emailChange(e)}}
+          /><br />
+            <TextField
+              value={this.state.password}
+              type="password"
+              floatingLabelText="Password"
+              onChange={(e) => {this.passwordChange(e)}}
+            /><br />
+            <RaisedButton type="submit" label="Register" primary={true}/>
         </form>
         <Link to='/login'>Login</Link>
       </div>
