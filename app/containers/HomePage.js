@@ -30,10 +30,6 @@ class HomePage extends Component {
     };
   }
   componentDidMount() {
-    console.log('props', this.props);
-    console.log('token', this.props.token);
-    console.log('id', this.props.user.id);
-
     axios.post('http://localhost:3000/', {
       id: this.props.user.id
       }, {

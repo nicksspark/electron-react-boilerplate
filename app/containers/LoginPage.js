@@ -4,6 +4,8 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import { Redirect } from 'react-router';
 import axios from 'axios';
+import TextField from 'material-ui/TextField';
+
 
 class LoginPage extends Component {
   constructor() {
@@ -53,6 +55,10 @@ class LoginPage extends Component {
     return (
       <div>
         <form onSubmit={(e) => this.onLogin(e)}>
+          <TextField
+            defaultValue="Username"
+            floatingLabelText="Floating Label Text"
+          /><br />
           <input type='text' placeholder='Username' value={this.state.username} onChange={(e) => {this.usernameChange(e)}}/>
           <input type='text' placeholder='Password' value={this.state.password} onChange={(e) => {this.passwordChange(e)}}/>
           <button type='submit'>Login</button>

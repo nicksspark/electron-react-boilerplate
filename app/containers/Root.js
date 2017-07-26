@@ -9,7 +9,7 @@ import RegisterPage from './RegisterPage';
 import HomePage from './HomePage';
 import ExplorePage from './ExplorePage';
 import { Switch, Route, Redirect } from 'react-router';
-
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 type RootType = {
   store: {},
@@ -20,7 +20,9 @@ export default function Root({ store, history }: RootType) {
   return (
     <Provider store={store}>
       <ConnectedRouter history={history}>
-        <Routes />
+        <MuiThemeProvider>
+          <Routes />
+        </MuiThemeProvider>
       </ConnectedRouter>
     </Provider>
   );

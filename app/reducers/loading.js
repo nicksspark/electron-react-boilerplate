@@ -1,7 +1,8 @@
 const loading = (state = { loading: true }, action) => {
+  const newState = state;
   switch (action.type) {
     case 'LOADED':
-      return { loading: false };
+      return { loading: !newState.loading };
     default:
       return state
   }

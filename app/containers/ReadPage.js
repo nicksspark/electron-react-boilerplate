@@ -4,6 +4,8 @@ import HomePage from './HomePage';
 import { Redirect } from 'react-router';
 import axios from 'axios';
 import { loaded } from '../actions/index';
+import styles from './css/styles.css';
+import { Link } from 'react-router-dom';
 
 class ReadPage extends Component {
   constructor() {
@@ -33,6 +35,9 @@ class ReadPage extends Component {
       console.log('ERR', err);
     })
   }
+  onHome() {
+    this.props.loaded();
+  }
   render() {
     if (!this.props.token) {
       return <Redirect to='/login' />;
@@ -41,9 +46,18 @@ class ReadPage extends Component {
     const loading = this.props.loading;
     return (!loading &&
       <div>
-        {book.title}
-        {book.author}
-        {book.text}
+        <Link className={styles.btn} to="/" onClick={() => {this.onHome()}}>Home</Link>
+        <div>
+          <div>
+            {book.title}
+          </div>
+          <div>
+            {book.author}
+          </div>
+          <div>
+            {book.text}
+          </div>
+        </div>
       </div>
     );
   }
