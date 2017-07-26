@@ -105,11 +105,11 @@ class RegisterPage extends Component {
       return <Redirect to= '/login' />;
     }
     return (
-        <h1> Word Farm </h1>
+      <div className={CSSstyles.container}>
+        <img src='./visuals/logo-large.png'/>
         <h3> Register </h3>
+        <div>
         <form onSubmit={(e) => {this.onSubmit(e)}}>
-          <div className={CSSstyles.container}>
-          <div className={CSSstyles.formContainer}>
           <TextField
             value={this.state.fname}
             floatingLabelText="First Name"
@@ -136,11 +136,10 @@ class RegisterPage extends Component {
               floatingLabelText="Password"
               onChange={(e) => {this.passwordChange(e)}}
             /><br />
-            </div>
-          </div>
             <RaisedButton type="submit" label="Register" primary={true}/>
-            <RaisedButton className= {CSSstyles.inlineButtons} label="Login" secondary={true} onClick= {() => {this.onLogin()}}/>
+            <RaisedButton label="Login" secondary={true} onClick= {() => {this.onLogin()}}/>
         </form>
+      </div>
       </div>
     );
   }

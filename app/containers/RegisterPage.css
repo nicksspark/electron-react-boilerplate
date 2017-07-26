@@ -1,20 +1,9 @@
 .container {
+  height: auto;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  padding: 150px;
-}
-
-.formContainer {
-  padding-left: 50px;
-  padding-right: 50px;
-  padding-top: 75;
-  padding-bottom: 100;
-  border-color: rgba(169, 164, 164, 0.11);
-  border: 5px;
-}
-
-.inlineButtons {
-  display: flex;
-  justify-items: center;
+  padding-top: 100px;
+  padding-bottom: 100px;
 }
