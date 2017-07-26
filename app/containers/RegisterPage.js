@@ -105,6 +105,7 @@ class RegisterPage extends Component {
       return <Redirect to= '/login' />;
     }
     return (
+      <div>
         <h1> Word Farm </h1>
         <h3> Register </h3>
         <form onSubmit={(e) => {this.onSubmit(e)}}>

@@ -85,7 +85,6 @@ class LoginPage extends Component {
             <RaisedButton type='submit' label="Login" primary={true} style={JSstyles.submit} />
             <RaisedButton label="Register" secondary={true} style={JSstyles.submit} onClick={() => this.onRegister()} />
           </form>
-          <Link to='/register'>Register</Link>
         </div>
       </div>
     );
