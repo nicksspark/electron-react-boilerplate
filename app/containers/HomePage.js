@@ -7,7 +7,12 @@ import BookStream from '../components/BookStream';
 import axios from 'axios';
 import styles from './css/styles.css';
 import { logout } from '../actions/index';
-
+import RaisedButton from 'material-ui/RaisedButton';
+import Popover, { PopoverAnimationVertical } from 'material-ui/Popover';
+import Menu from 'material-ui/Menu';
+import MenuItem from 'material-ui/MenuItem';
+import CSSstyles from './Homepage.css';
+//LOGO FONT: TAMIL MN
 
 class HomePage extends Component {
   constructor() {
@@ -26,7 +31,9 @@ class HomePage extends Component {
         //   image: 'https://prodimage.images-bn.com/pimages/9780470647691_p0_v2_s192x300.jpg',
         //   id: '2'
         // }
-      ]
+      ],
+      open: false,
+      explore: false
     };
   }
   componentDidMount() {
@@ -49,11 +56,29 @@ class HomePage extends Component {
       console.log('ERR', err);
     })
   }
-  onLogout(e) {
-    e.preventDefault();
-    console.log('trying to log out');
+  onLogout() {
     this.props.logout();
   }
+  onExplore() {
+    this.setState({
+      explore: true
+    })
+  }
+  handleTouchTap = (e) => {
+    // This prevents ghost click.
+    e.preventDefault();
+
+    this.setState({
+      open: true,
+      anchorEl: event.currentTarget,
+    });
+  };
+
+  handleRequestClose = () => {
+    this.setState({
+      open: false,
+    });
+  };
   render() {
     console.log('im in home page');
     console.log('token', this.props.token);
@@ -61,21 +86,33 @@ class HomePage extends Component {
       console.log('redirecting to login');
       return <Redirect to='/login' />;
     }
+    if (this.state.explore) {
+      return <Redirect to='/explore' />;
+    }
     return (
+      <div>
         <div>
-          <div className={styles.container}>
-            <div className={styles.btnGroup}>
-              <Link className={styles.btn} to="/explore">Explore</Link>
-              <button className={styles.btn} onClick={(e) => {this.onLogout(e)}}>Logout</button>
-            </div>
-          </div>
-            <div>
-              <h2 className={styles.user}>Welcome, {this.props.user.fname}</h2>
-          </div>
-          <div className={styles.container}>
-          <h2 className={styles.header}>Textbook App</h2>
+          <RaisedButton
+            onClick={(e) => this.handleTouchTap(e)}
+            label="Navigate"
+          />
+          <Popover
+            open={this.state.open}
+            anchorEl={this.state.anchorEl}
+            anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
+            targetOrigin={{horizontal: 'left', vertical: 'top'}}
+            onRequestClose={this.handleRequestClose}
+            animation={PopoverAnimationVertical}
+          >
+            <Menu>
+              <MenuItem primaryText="Explore" onClick={() => {this.onExplore()}}/>
+              <MenuItem primaryText="Logout" onClick={() => {this.onLogout()}}/>
+            </Menu>
+          </Popover>
         </div>
-          <h2>Books:</h2>
+        <div className={styles.container}>
+          <img src='./visuals/logo-small.png'/>
+        </div>
         <div className= {styles.bookStream}>
           <BookStream books={this.state.books}/>
         </div>

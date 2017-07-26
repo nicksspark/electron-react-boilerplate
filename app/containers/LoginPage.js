@@ -14,7 +14,8 @@ class LoginPage extends Component {
     super();
     this.state = {
       username: '',
-      password: ''
+      password: '',
+      register: false
     };
     this.usernameChange = this.usernameChange.bind(this);
     this.passwordChange = this.passwordChange.bind(this);
@@ -46,6 +47,11 @@ class LoginPage extends Component {
       console.log('ERROR', err);
     });
   }
+  onRegister() {
+    this.setState({
+      register: true
+    });
+  }
 
   render() {
     console.log('im in login');
@@ -54,10 +60,13 @@ class LoginPage extends Component {
     if (this.props.token) {
       return <Redirect to='/' />;
     }
+    if (this.state.register) {
+      return <Redirect to='/register' />;
+    }
     return (
       <div className={CSSstyles.container}>
         <div>
-          <img src='../../../CreativeCloudFiles/Asset 2.png'/>
+          <img src='./visuals/logo-large.png'/>
         </div>
         <div>
           <form onSubmit={(e) => this.onLogin(e)}>
@@ -73,7 +82,8 @@ class LoginPage extends Component {
               value={this.state.password}
               onChange={(e) => {this.passwordChange(e)}}
             /><br />
-            <RaisedButton type='submit' label="Primary" primary={true} style={JSstyles.submit} />
+            <RaisedButton type='submit' label="Login" primary={true} style={JSstyles.submit} />
+            <RaisedButton label="Register" secondary={true} style={JSstyles.submit} onClick={() => this.onRegister()} />
           </form>
           <Link to='/register'>Register</Link>
         </div>
