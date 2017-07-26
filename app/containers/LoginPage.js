@@ -55,7 +55,7 @@ class LoginPage extends Component {
       return <Redirect to='/' />;
     }
     return (
-      <div>
+      <div className={CSSstyles.container}>
         <div>
           <img src='../../../CreativeCloudFiles/Asset 2.png'/>
         </div>
