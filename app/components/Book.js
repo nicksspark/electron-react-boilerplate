@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router';
 
 import styles from '../containers/css/styles.css';
+import CSSstyles from './Book.css';
+
+
 class Book extends Component {
   constructor(props) {
     super(props);
@@ -30,10 +33,7 @@ class Book extends Component {
         </div>
         <div className={styles.titleContainer}>
           <div>
-            <p>{this.props.book.title}</p>
-          </div>
-          <div className={styles.author}>
-            <p>{this.props.book.author}</p>
+            <p>{this.props.book.title}, <span className={CSSstyles.author}>{this.props.book.author}</span></p>
           </div>
         </div>
     </div>
