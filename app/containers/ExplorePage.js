@@ -8,25 +8,15 @@ import axios from 'axios';
 import Book from '../components/Book';
 import BookStream from '../components/BookStream';
 import styles from './css/styles.css';
+import RaisedButton from 'material-ui/RaisedButton';
+import CSSstyles from './ExplorePage.css';
 
 class ExplorePage extends Component {
   constructor() {
     super();
     this.state = {
-      books: [
-        // {
-        //   title: 'Early Transcendentals',
-        //   author: 'Stewart',
-        //   image: 'https://images-na.ssl-images-amazon.com/images/I/51xUmFAz%2BVL._SX258_BO1,204,203,200_.jpg',
-        //   id: 1
-        // },
-        // {
-        //   title: 'Calculus',
-        //   author: 'Anton, Bivens, Davis',
-        //   image: 'https://prodimage.images-bn.com/pimages/9780470647691_p0_v2_s192x300.jpg',
-        //   id: 2
-        // }
-      ]
+      books: [],
+      home: false
     };
   }
 
@@ -47,15 +37,27 @@ class ExplorePage extends Component {
       console.log('ERR', err);
     });
   }
+  onHome() {
+    this.setState({
+      home: true
+    });
+  }
   render() {
     if (!this.props.token) {
       return <Redirect to='/login' />;
     }
+    if (this.state.home) {
+      return <Redirect to='/' />;
+    }
     return (
       <div>
-        <h2 className={styles.header}>Explore</h2>
-        <Link to="/">Back to home</Link>
-        <BookStream books={this.state.books} />
+        <div className={CSSstyles.home}>
+          <RaisedButton label="Home" onClick={() => {this.onHome()}}/>
+        </div>
+        <div className={CSSstyles.container}>
+          <h2>Explore</h2>
+          <BookStream books={this.state.books} />
+        </div>
       </div>
     );
   }
