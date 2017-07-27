@@ -64,13 +64,12 @@ class HomePage extends Component {
       explore: true
     })
   }
-  handleTouchTap = (e) => {
+  onNav(e) {
     // This prevents ghost click.
     e.preventDefault();
-
     this.setState({
       open: true,
-      anchorEl: event.currentTarget,
+      anchorEl: e.currentTarget,
     });
   };
 
@@ -80,10 +79,7 @@ class HomePage extends Component {
     });
   };
   render() {
-    console.log('im in home page');
-    console.log('token', this.props.token);
     if (!this.props.token) {
-      console.log('redirecting to login');
       return <Redirect to='/login' />;
     }
     if (this.state.explore) {
@@ -91,9 +87,9 @@ class HomePage extends Component {
     }
     return (
       <div>
-        <div>
+        <div className={CSSstyles.nav}>
           <RaisedButton
-            onClick={(e) => this.handleTouchTap(e)}
+            onClick={(e) => this.onNav(e)}
             label="Navigate"
           />
           <Popover

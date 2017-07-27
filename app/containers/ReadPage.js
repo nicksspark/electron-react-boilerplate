@@ -15,11 +15,9 @@ class ReadPage extends Component {
   }
   componentWillMount() {
     console.log('component is mounting.....');
-    console.log('token', this.props.token);
     const path = this.props.path;
     console.log('path', path);
     const bookId = path.split('/')[2];
-    console.log('bookId', bookId);
     axios.get('http://localhost:3000/read/' + bookId, {
       headers: {
         'Authorization': 'Bearer ' + this.props.token

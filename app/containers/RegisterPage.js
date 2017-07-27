@@ -136,7 +136,7 @@ class RegisterPage extends Component {
               type="password"
               floatingLabelText="Password"
               onChange={(e) => {this.passwordChange(e)}}
-            /><br />
+            /><br /><br />
             <RaisedButton type="submit" label="Register" primary={true}/>
             <RaisedButton className= {CSSstyles.back} label="Back" secondary={true} onClick= {() => {this.onLogin()}}/>
         </form>
