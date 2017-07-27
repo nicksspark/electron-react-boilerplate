@@ -6,7 +6,7 @@ import axios from 'axios';
 import { loaded } from '../actions/index';
 import styles from './css/styles.css';
 import { Link } from 'react-router-dom';
-import CSSstyles from './LoginPage.css';
+import CSSstyles from './ReadPage.css';
 
 class ReadPage extends Component {
   constructor() {
@@ -49,13 +49,10 @@ class ReadPage extends Component {
       <div>
         <Link className={styles.btn} to="/" onClick={() => {this.onHome()}}>Home</Link>
         <div>
-          <div>
-            {book.title}
-          </div>
-          <div>
-            {book.author}
-          </div>
-          <div>
+          <h1>
+            {book.title}, {book.author}
+          </h1>
+          <div className={CSSstyles.page}>
             {book.text}
           </div>
         </div>
