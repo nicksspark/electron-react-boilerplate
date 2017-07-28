@@ -55,7 +55,7 @@ class ExplorePage extends Component {
           <RaisedButton label="Home" onClick={() => {this.onHome()}}/>
         </div>
         <div className={CSSstyles.container}>
-          <h2>Explore</h2>
+          <div className={CSSstyles.title}>Explore</div>
           <BookStream books={this.state.books} />
         </div>
       </div>

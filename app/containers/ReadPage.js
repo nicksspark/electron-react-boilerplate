@@ -6,12 +6,20 @@ import axios from 'axios';
 import { loaded } from '../actions/index';
 import styles from './css/styles.css';
 import { Link } from 'react-router-dom';
-import CSSstyles from './LoginPage.css';
+import CSSstyles from './ReadPage.css';
+import Reader from '../components/Reader';
+import RaisedButton from 'material-ui/RaisedButton';
+
+
+//window.getSelection()
+//
 
 class ReadPage extends Component {
   constructor() {
     super();
-    this.state = {};
+    this.state = {
+      home: false
+    };
   }
   componentWillMount() {
     console.log('component is mounting.....');
@@ -36,26 +44,26 @@ class ReadPage extends Component {
   }
   onHome() {
     this.props.loaded();
+    this.setState({
+      home: true
+    });
   }
   render() {
     if (!this.props.token) {
       return <Redirect to='/login' />;
     }
+    if (this.state.home) {
+      return <Redirect to='/' />;
+    }
     const book = this.state.book;
     const loading = this.props.loading;
     return (!loading &&
       <div>
-        <Link className={styles.btn} to="/" onClick={() => {this.onHome()}}>Home</Link>
+        <div className={CSSstyles.home}>
+          <RaisedButton label="Home" onClick={() => {this.onHome()}}/>
+        </div>
         <div>
-          <div>
-            {book.title}
-          </div>
-          <div>
-            {book.author}
-          </div>
-          <div>
-            {book.text}
-          </div>
+          <Reader />
         </div>
       </div>
     );

@@ -69,7 +69,7 @@ class HomePage extends Component {
     e.preventDefault();
     this.setState({
       open: true,
-      anchorEl: e.currentTarget,
+      anchorEl: e.currentTarget
     });
   };
 
