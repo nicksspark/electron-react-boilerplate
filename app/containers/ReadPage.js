@@ -7,15 +7,12 @@ import { loaded } from '../actions/index';
 import styles from './css/styles.css';
 import { Link } from 'react-router-dom';
 import CSSstyles from './ReadPage.css';
-<<<<<<< HEAD
 import Reader from '../components/Reader';
 import RaisedButton from 'material-ui/RaisedButton';
 
 
 //window.getSelection()
 //
-=======
->>>>>>> 08eb7012688776227f07f0ab781cabe7d30286ae
 
 class ReadPage extends Component {
   constructor() {
