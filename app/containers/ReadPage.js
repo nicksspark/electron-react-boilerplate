@@ -7,12 +7,15 @@ import { loaded } from '../actions/index';
 import styles from './css/styles.css';
 import { Link } from 'react-router-dom';
 import CSSstyles from './ReadPage.css';
+<<<<<<< HEAD
 import Reader from '../components/Reader';
 import RaisedButton from 'material-ui/RaisedButton';
 
 
 //window.getSelection()
 //
+=======
+>>>>>>> 08eb7012688776227f07f0ab781cabe7d30286ae
 
 class ReadPage extends Component {
   constructor() {
@@ -63,7 +66,16 @@ class ReadPage extends Component {
           <RaisedButton label="Home" onClick={() => {this.onHome()}}/>
         </div>
         <div>
+<<<<<<< HEAD
           <Reader />
+=======
+          <h1>
+            {book.title}, {book.author}
+          </h1>
+          <div className={CSSstyles.page}>
+            {book.text}
+          </div>
+>>>>>>> 08eb7012688776227f07f0ab781cabe7d30286ae
         </div>
       </div>
     );
