@@ -7,7 +7,7 @@ import { loaded } from '../actions/index';
 import styles from './css/styles.css';
 import { Link } from 'react-router-dom';
 import CSSstyles from './ReadPage.css';
-import Reader from '../components/Reader';
+// import Reader from '../components/Reader';
 import RaisedButton from 'material-ui/RaisedButton';
 
 
@@ -21,8 +21,26 @@ class ReadPage extends Component {
       home: false
     };
   }
+  // componentDidMount() {
+  //   const script3 = document.createElement("script");
+  //   script3.src = "./containers/pageviewer.js";
+  //   script3.async = true;
+  //   document.body.appendChild(script3);
+  // }
   componentWillMount() {
     console.log('component is mounting.....');
+
+    //add scripts
+    // const script1 = document.createElement("script");
+    // script1.src = "../node_modules/pdfjs-dist/web/pdf_viewer.js";
+    // script1.async = true;
+    // document.head.appendChild(script1);
+    //
+    // const script2 = document.createElement("script");
+    // script2.src = "../node_modules/pdfjs-dist/build/pdf.js";
+    // script2.async = true;
+    // document.head.appendChild(script2);
+
     const path = this.props.path;
     console.log('path', path);
     const bookId = path.split('/')[2];
@@ -37,6 +55,18 @@ class ReadPage extends Component {
         book: res.data.book
       });
       this.props.loaded();
+    })
+    .then(() => {
+      const script3 = document.createElement("script");
+      script3.src = "./containers/pageviewer.js";
+      script3.async = true;
+      document.body.appendChild(script3);
+
+      const link = document.createElement("link");
+      link.href = "../node_modules/pdfjs-dist/web/pdf_viewer.css";
+      link.rel = "stylesheet";
+      document.head.appendChild(link);
+
     })
     .catch((err) => {
       console.log('ERR', err);
@@ -62,18 +92,7 @@ class ReadPage extends Component {
         <div className={CSSstyles.home}>
           <RaisedButton label="Home" onClick={() => {this.onHome()}}/>
         </div>
-        <div>
-<<<<<<< HEAD
-          <Reader />
-=======
-          <h1>
-            {book.title}, {book.author}
-          </h1>
-          <div className={CSSstyles.page}>
-            {book.text}
-          </div>
->>>>>>> 08eb7012688776227f07f0ab781cabe7d30286ae
-        </div>
+        <div id="pageContainer" className="pdfViewer singlePageView"></div>
       </div>
     );
   }

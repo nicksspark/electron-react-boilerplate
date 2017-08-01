@@ -14,13 +14,19 @@
         }
       }());
     </script>
-    <!-- <script rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css"></script> -->
+
+    <!-- pdfjs -->
+    <script src="../node_modules/pdfjs-dist/build/pdf.js"></script>
+    <script src="../node_modules/pdfjs-dist/web/pdf_viewer.js"></script>
+
     <style>
       @import url('https://fonts.googleapis.com/css?family=Roboto');
     </style>
   </head>
   <body>
     <div id="root"></div>
+    <!-- <div id="pageContainer" className="pdfViewer singlePageView"></div> -->
+
     <script>
       {
         const scripts = [];
@@ -46,5 +52,6 @@
         );
       }
     </script>
+    <!-- <script src="./containers/pageviewer.js"></script> -->
   </body>
 </html>

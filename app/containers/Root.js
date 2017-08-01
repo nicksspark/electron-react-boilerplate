@@ -3,12 +3,12 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
 import Routes from '../routes';
-import App from './App';
-import LoginPage from './LoginPage';
-import RegisterPage from './RegisterPage';
-import HomePage from './HomePage';
-import ExplorePage from './ExplorePage';
-import { Switch, Route, Redirect } from 'react-router';
+// import App from './App';
+// import LoginPage from './LoginPage';
+// import RegisterPage from './RegisterPage';
+// import HomePage from './HomePage';
+// import ExplorePage from './ExplorePage';
+// import { Switch, Route, Redirect } from 'react-router';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 type RootType = {
